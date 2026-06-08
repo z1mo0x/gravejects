@@ -1,16 +1,20 @@
 'use client'
 
+import useMount from "@/components/hooks/useMount";
 import Logo from "@/components/ui/header/logo";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Skeleton } from "@/components/ui/skeleton";
 import Search from "@/components/ux/header/search";
 import ThemeSwitcher from "@/components/ux/header/theme-switcher";
 import { useTheme } from "@/contexts/theme/themeContext";
+import { AnimatePresence, motion } from "framer-motion";
 import { User } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
 
     const { theme } = useTheme()
+    const mount = useMount()
 
     return (
         <>
@@ -32,11 +36,28 @@ export default function Home() {
 
             <div className="h-1/2 relative">
                 <div className="hero-image absolute w-full h-full">
-                    <Image className="object-cover object-right" alt="Фон"
-                        src={`${theme === 'dark' ? '/banner-dark.png' : '/banner-light-7.png'}`}
-                        fill
-                        priority
-                    />
+                    <AnimatePresence mode='sync'>
+                        {mount ? (
+                            <motion.div
+                                key={theme}
+                                className="absolute inset-0"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.35 }}
+                            >
+                                <Image
+                                    className="object-cover object-right"
+                                    alt="Фон"
+                                    src={theme === "dark" ? "/banner-dark.png" : "/banner-light.png"}
+                                    fill
+                                    priority
+                                />
+                            </motion.div>
+                        ) : (
+                            <Skeleton className="h-full w-full" />
+                        )}
+                    </AnimatePresence>
+                    <div className="bottom-blur"></div>
                 </div>
                 <div className=""></div>
                 <div className=""></div>

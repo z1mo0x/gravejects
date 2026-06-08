@@ -21,16 +21,16 @@ export default async function LangLayout({
 
     return (
         <LangProvider lang={lang as Lang}>
-            <SidebarProvider className="bg-background/90!">
-                <AppSidebar />
-                <TooltipProvider>
-                    <ThemeProvider>
+            <ThemeProvider>
+                <SidebarProvider className="bg-background/90!">
+                    <TooltipProvider>
+                        <AppSidebar />
                         <main className="w-full relative">
                             {children}
                         </main>
-                    </ThemeProvider>
-                </TooltipProvider>
-            </SidebarProvider>
+                    </TooltipProvider>
+                </SidebarProvider>
+            </ThemeProvider>
         </LangProvider>
     );
 }
