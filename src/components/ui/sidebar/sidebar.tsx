@@ -4,18 +4,15 @@ import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
-    SidebarGroup,
-    SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem,
+
 } from "@/components/ui/sidebar"
 import { useLang } from '@/contexts/lang/langContext';
-import { navItems, site } from '@/config/site';
+import { navItems } from '@/config/site';
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Blink from "@/components/decorations/Blink";
 import { useTheme } from "@/contexts/theme/themeContext";
 import { AnimatePresence, motion } from "framer-motion";
 import useMount from "@/components/hooks/useMount";
