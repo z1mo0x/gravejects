@@ -4,6 +4,7 @@ import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
+    SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
 
@@ -31,7 +32,7 @@ const AppSidebar = () => {
 
     return (
         <Sidebar>
-            <SidebarContent className="pt-5">
+            <SidebarHeader className="pt-10">
                 <Link href={'/'} className="sidebar-logo mx-auto flex justify-center flex-col items-center">
                     <AnimatePresence mode='sync'>
                         {mount ? (
@@ -59,7 +60,9 @@ const AppSidebar = () => {
                         {t.descr}
                     </div>
                 </Link>
-                <SidebarMenu className="mt-10 gap-2.5">
+            </SidebarHeader>
+            <SidebarContent className="pt-5">
+                <SidebarMenu className="mt-5 gap-2.5">
                     {navItems.map((item) => {
                         return (
                             <SidebarMenuButton isActive={pathname === getHref(item.path)} className={`px-3 py-8`} key={item.path + item.key} asChild>
