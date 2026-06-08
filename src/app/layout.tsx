@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Unbounded, JetBrains_Mono, Manrope, Cinzel } from "next/font/google";
+import { Unbounded, JetBrains_Mono, Manrope, Cinzel, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import ThemeProvider from "@/contexts/theme/themeContext";
 
 const unboundedSans = Unbounded({
   variable: "--font-unbound-sans",
@@ -11,6 +10,10 @@ const unboundedSans = Unbounded({
 const cinzelSans = Cinzel({
   variable: "--font-cinzel-sans",
   subsets: ["latin"],
+});
+const garamondSans = Cormorant_Garamond({
+  variable: "--font-garamond-sans",
+  subsets: ["latin", 'cyrillic'],
 });
 
 const jetBrainsMono = JetBrains_Mono({
@@ -51,9 +54,9 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${unboundedSans.variable} ${cinzelSans.variable} ${manropeSans.variable} ${jetBrainsMono.variable} antialiased`}
+        className={`${unboundedSans.variable} ${garamondSans.variable} ${cinzelSans.variable} ${manropeSans.variable} ${jetBrainsMono.variable} antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        {children}
       </body>
     </html>
   );
