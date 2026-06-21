@@ -1,32 +1,54 @@
-import { createClient } from "@/lib/server";
+export async function getRepositories(token: string) {
 
-type GithubRepo = {
-    id: number;
-    name: string;
-    full_name: string;
-    html_url: string;
-    description: string | null;
-    language: string | null;
-    stargazers_count: number;
-    forks_count: number;
-    private: boolean;
-    archived: boolean;
-    created_at: string;
-    updated_at: string;
-    pushed_at: string | null;
-    owner: {
-        login: string;
-        avatar_url: string;
-    };
-};
+    const reposRes = await fetch(
+        "https://api.github.com/user/repos?per_page=10&sort=updated",
+        {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: "application/vnd.github+json",
+            },
+        }
+    );
 
+    const repos = await reposRes.json();
 
-// export async function getRepositories(userId: string) {
+    const enrichedRepos = await Promise.all(
+        repos.map(async (repo: any) => {
+            const langRes = await fetch(
+                `https://api.github.com/repos/${repo.owner.login}/${repo.name}/languages`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
 
-//     const supabase = createClient()
+            const languages = await langRes.json();
 
-//     const { data: { session } } = await (await supabase).auth.getSession();
+            return {
+                id: repo.id,
+                name: repo.name,
+                fullName: repo.full_name,
+                url: repo.html_url,
 
-//     const GITHUB_API_URL = 'https://api.github.com/user/repos?per_page=5';
+                description: repo.description,
+                language: repo.language,
 
-// }
+                stars: repo.stargazers_count,
+                forks: repo.forks_count,
+
+                isPrivate: repo.private,
+
+                updatedAt: repo.updated_at,
+                pushedAt: repo.pushed_at,
+
+                languages: Object.entries(languages).map(([name, bytes]) => ({
+                    name,
+                    bytes: bytes as number,
+                })),
+            };
+        })
+    );
+
+    return enrichedRepos;
+}
