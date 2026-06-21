@@ -16,8 +16,9 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useTheme } from "@/contexts/theme/themeContext";
 import { AnimatePresence, motion } from "framer-motion";
-import useMount from "@/components/hooks/useMount";
+import useMount from "@/hooks/useMount";
 import { Skeleton } from "../skeleton";
+import { Separator } from "../separator";
 
 const AppSidebar = () => {
 
@@ -33,7 +34,7 @@ const AppSidebar = () => {
     return (
         <Sidebar>
             <SidebarHeader className="pt-10">
-                <Link href={'/'} className="sidebar-logo mx-auto flex justify-center flex-col items-center">
+                <Link href={`/${lang}/`} className="sidebar-logo mx-auto flex justify-center flex-col items-center">
                     <AnimatePresence mode='sync'>
                         {mount ? (
                             <motion.div
@@ -45,7 +46,7 @@ const AppSidebar = () => {
                             >
                                 <Image
                                     src={theme === "dark" ? "/projectyard.png" : "/projectyard-light.png"}
-                                    width={150} height={100}
+                                    width={100} height={100}
                                     alt="Логотип"
                                 />
                             </motion.div>
@@ -56,27 +57,49 @@ const AppSidebar = () => {
                     {/* <div className="text-center unbounded mt-2 text-xl text-primary">
                         {t.title}<Blink />
                     </div> */}
-                    <div className="text-center garamont text-2xl mt-2">
-                        {t.descr}
+                    <div className="font-bold text-center unbounded uppercase text-1xl mt-2">
+                        {t.descr.slice(0, 8)}
+                        <br />
+                        <span className="text-primary">
+                            {t.descr.slice(8)}
+                        </span>
                     </div>
                 </Link>
             </SidebarHeader>
             <SidebarContent className="pt-5">
-                <SidebarMenu className="mt-5 gap-2.5">
+                <SidebarMenu className="mt-5 mb-5">
                     {navItems.map((item) => {
+
+                        const isActive = pathname === getHref(item.path)
+
                         return (
-                            <SidebarMenuButton isActive={pathname === getHref(item.path)} className={`px-3 py-8`} key={item.path + item.key} asChild>
-                                <Link href={getHref(item.path)} className={` `}>
-                                    <item.icon scale={2} size={50} className={`size-6! ${pathname === getHref(item.path) && 'text-primary'}`} />
-                                    <span className={`unbounded text-[14px] uppercase ${pathname === getHref(item.path) && 'text-primary'}`}>{t[item.key]}</span>
+                            <SidebarMenuButton
+                                isActive={isActive}
+                                className={`pl-6 py-8`}
+                                key={item.path + item.key}
+                                asChild>
+                                <Link href={getHref(item.path)}>
+                                    <item.icon scale={2} size={50} className={`size-6! ${isActive && 'text-primary'}`} />
+                                    <span className={`unbounded text-[12px] uppercase ${isActive && 'text-primary'}`}>
+                                        {t[item.key]}
+                                    </span>
                                 </Link>
                             </SidebarMenuButton>
                         )
                     }
                     )}
                 </SidebarMenu>
+                <Separator />
+                <div className="mt-5 text-white/25">
+                    <p className="text-center text-lg p-4">
+                        {t.quote}
+                    </p>
+                    <p className="text-center jet-brains tracking-tighter text-2xl  font-medium">{"</>"}</p>
+                </div>
             </SidebarContent>
-            <SidebarFooter />
+            <SidebarFooter>
+
+            </SidebarFooter>
         </Sidebar>
     )
 }

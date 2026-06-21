@@ -1,6 +1,6 @@
 'use client'
 
-import useMount from "@/components/hooks/useMount";
+import useMount from "@/hooks/useMount";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "@/contexts/theme/themeContext";
 import { Moon, Sun } from "lucide-react";

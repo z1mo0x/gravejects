@@ -5,6 +5,9 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/ui/sidebar/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeProvider from "@/contexts/theme/themeContext";
+import Header from "@/components/common/header";
+import Providers from "../providers";
+import AppInitializer from "@/hoc/app-initialization";
 
 export default async function LangLayout({
     children,
@@ -22,14 +25,21 @@ export default async function LangLayout({
     return (
         <LangProvider lang={lang as Lang}>
             <ThemeProvider>
-                <SidebarProvider className="bg-background/90!">
-                    <TooltipProvider>
-                        <AppSidebar />
-                        <main className="w-full relative">
-                            {children}
-                        </main>
-                    </TooltipProvider>
-                </SidebarProvider>
+                <AppInitializer>
+                    <SidebarProvider className="bg-background/90!">
+                        <TooltipProvider>
+                            <AppSidebar />
+                            <div className="wrapper relative w-full">
+                                <Header />
+                                <main className="w-full relative">
+                                    <Providers>
+                                        {children}
+                                    </Providers>
+                                </main>
+                            </div>
+                        </TooltipProvider>
+                    </SidebarProvider>
+                </AppInitializer>
             </ThemeProvider>
         </LangProvider>
     );
