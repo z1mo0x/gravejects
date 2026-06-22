@@ -31,8 +31,8 @@ function GithubSelect({ repos, setPreview }: Props) {
 
     return (
         <>
-            <div className="mt-5">
-                <div className="font-bold unbounded">
+            <div className="mt-10">
+                <div className="text-xl font-bold unbounded">
                     {t.bury.repository.title}
                 </div>
 

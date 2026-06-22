@@ -18,7 +18,7 @@ const Logo = () => {
 
     return (
         <div className="">
-            <div className="text-primary  jet-brains w-75 font-bold">
+            <div className="code-glow text-primary  jet-brains w-75 font-bold">
                 {t.title}{text}<Cursor cursorStyle="_" />
             </div>
         </div>

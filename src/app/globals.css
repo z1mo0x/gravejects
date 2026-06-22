@@ -494,3 +494,28 @@ body {
   gap: 50px;
   grid-template-columns: 1.5fr 1fr;
 }
+
+.grid-user-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) 400px;
+  gap: 20px;
+}
+
+.grid-user-bottom {
+  display: grid;
+
+  gap: 50px;
+  grid-template-columns: 1fr 400px;
+  gap: 20px;
+}
+
+img {
+  pointer-events: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.icon-stone {
+  filter: brightness(.9);
+}

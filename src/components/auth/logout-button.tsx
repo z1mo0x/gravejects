@@ -17,7 +17,7 @@ export function LogoutButton() {
     router.push(`/${lang}/auth/login`)
   }
 
-  return <CustomButton className='border-red-500 text-red-500 w-max' variant='icon' iconLeft={SignOutIcon} onClick={logout}>
+  return <CustomButton className='border-red-400 text-red-400 text-[12px] w-max px-4! py-2!' variant='icon' iconLeft={SignOutIcon} onClick={logout}>
     {t.auth.common.exit}
   </CustomButton>
 }

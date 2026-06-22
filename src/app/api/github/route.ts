@@ -1,14 +1,14 @@
-import { createClient } from '@/lib/server';
-import { getRepositories } from '@/services/github.service';
-import { NextRequest, NextResponse } from 'next/server';
+import { createClient } from "@/lib/server";
+import { getRepositories } from "@/services/github.service";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     try {
-        const supabase = createClient();
+        const supabase = await createClient();
 
         const {
             data: { user },
-        } = await (await supabase).auth.getUser();
+        } = await supabase.auth.getUser();
 
         if (!user) {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -16,7 +16,17 @@ export async function GET() {
 
         const {
             data: { session },
-        } = await (await supabase).auth.getSession();
+            error: sessionError
+        } = await supabase.auth.getSession();
+
+        if (sessionError) {
+            console.error('[GITHUB_SESSION_ERROR]', sessionError);
+
+            return NextResponse.json(
+                { error: 'Session error' },
+                { status: 401 }
+            );
+        }
 
         const token = session?.provider_token;
 
@@ -27,11 +37,17 @@ export async function GET() {
         const repos = await getRepositories(token);
 
         return NextResponse.json(repos);
-    } catch (e) {
-        console.error(e);
+
+    } catch (error) {
+        console.error('[GITHUB_REPOS_ERROR]', error);
 
         return NextResponse.json(
-            { error: "Internal server error" },
+            {
+                error:
+                    error instanceof Error
+                        ? error.message
+                        : 'Internal server error',
+            },
             { status: 500 }
         );
     }

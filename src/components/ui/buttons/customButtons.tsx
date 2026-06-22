@@ -12,7 +12,7 @@ const CustomButton = ({ variant = 'default', iconLeft: IconLeft, children, class
 
     if (variant === 'grave') {
         return (
-            <button className={`${className} relative grave-button cursor-pointer max-w-95 mx-auto px-8 py-4 flex gap-2.5 justify-center items-center`}
+            <button className={` relative grave-button cursor-pointer max-w-95 mx-auto px-8 py-4 flex gap-2.5 justify-center items-center ${className}`}
                 {...props}>
                 <Image src={'/button-bg.png'} fill alt='фон кнопки' className='-z-1' />
                 {!IconLeft ?

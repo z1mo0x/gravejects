@@ -13,9 +13,10 @@ export const site = {
     quotes: {
         login: 'user@projectyard:~$ auth',
         login_under: '> git commit -m "another ghost in the repo"',
-        sign_up: 'user@projectyard:~$ sign up"',
+        sign_up: 'user@projectyard:~$ sign up',
         sign_up_under: '> git commit -m "new soul joined the graveyard"',
-        user_profile: '> git log --author=gravekeeper'
+        user_profile: '> git log --author=gravekeeper',
+
     },
 
     dictionary: {
@@ -46,7 +47,8 @@ export const site = {
                     loading: "Загрузка...",
                     or: "или",
                     backToLogin: "Вернуться ко входу",
-                    exit: 'Покинуть'
+                    exit: 'Покинуть',
+                    login_github: "Войти через GitHub"
                 },
 
                 login: {
@@ -153,6 +155,12 @@ export const site = {
                     share: 'Поделиться наследием',
                 },
             },
+            stats: {
+                buried: 'Похоронено проектов',
+                archived: 'Архивировано проектов',
+                stars: 'Собрано звезд',
+                last_activity: 'Последняя активность',
+            }
         },
         en: {
             buryProject: 'Bury a project',
@@ -181,7 +189,8 @@ export const site = {
                     loading: "Loading...",
                     or: "or",
                     backToLogin: "Back to login",
-                    exit: 'Leave the Yard'
+                    exit: 'Leave the Yard',
+                    login_github: "Continue with GitHub"
                 },
 
                 login: {
@@ -288,6 +297,12 @@ export const site = {
                     share: 'Share the legacy',
                 },
             },
+            stats: {
+                buried: 'Projects buried',
+                archived: 'Repos archived',
+                stars: 'Stars collected',
+                last_activity: 'Last activity',
+            }
         }
     }
 };

@@ -23,7 +23,7 @@ export default async function LoginPage({ params }: Props) {
                 <div className="text-center text-muted-foreground">{t.auth.login.description}</div>
                 <div className="mt-5">
                     <GithubLoginButton lang={lang}>
-                        Войти через GitHub
+                        {t.auth.common.login_github}
                     </GithubLoginButton>
                 </div>
             </GraveBgForm>
