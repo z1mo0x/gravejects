@@ -55,8 +55,6 @@ export const site = {
                     metaTitle: "Вход",
                     title: "Войти в склеп",
                     description: "Получите доступ к архивным проекта, оставленным на вечное хранение, и сделайте свой вклад!",
-                    submit: "Войти в склеп",
-                    success: "Вы успешно вошли.",
                 },
             },
             bury: {
@@ -197,8 +195,6 @@ export const site = {
                     metaTitle: "Login",
                     title: "Return to the graveyard",
                     description: "Log in to keep archiving forgotten projects and repositories.",
-                    success: "You have successfully logged in.",
-                    error: "Could not log in. Check your email and password.",
                 },
             },
             bury: {
