@@ -35,8 +35,6 @@ export default async function ProtectedPage({ params }: Props) {
     console.error('[PROFILE_LOAD_ERROR]', profileError);
   }
 
-  console.log(user);
-
 
   return (
     <div className="min-h-svh pt-20 w-full">

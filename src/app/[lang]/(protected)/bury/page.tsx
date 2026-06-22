@@ -7,6 +7,14 @@ import { Repo } from '@/types/github/repo-type';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
+const REPOS_CACHE_KEY = 'projectyard.github.repos';
+const REPOS_CACHE_TTL = 1000 * 60 * 5; // 5 минут
+
+type CachedRepos = {
+    createdAt: number;
+    repos: Repo[];
+};
+
 function BuryPage() {
     const { t } = useLang();
 
@@ -23,6 +31,19 @@ function BuryPage() {
                 setIsReposLoading(true);
                 setReposError(null);
 
+                const cachedRaw = sessionStorage.getItem(REPOS_CACHE_KEY);
+
+                if (cachedRaw) {
+                    const cached = JSON.parse(cachedRaw) as CachedRepos;
+                    const isFresh = Date.now() - cached.createdAt < REPOS_CACHE_TTL;
+
+                    if (isFresh && Array.isArray(cached.repos)) {
+                        setRepos(cached.repos);
+                        setIsReposLoading(false);
+                        return;
+                    }
+                }
+
                 const res = await fetch('/api/github');
                 const data = await res.json();
 
@@ -37,8 +58,18 @@ function BuryPage() {
                     );
                 }
 
+                const reposData = Array.isArray(data) ? data : [];
+
                 if (mounted) {
-                    setRepos(Array.isArray(data) ? data : []);
+                    setRepos(reposData);
+
+                    sessionStorage.setItem(
+                        REPOS_CACHE_KEY,
+                        JSON.stringify({
+                            createdAt: Date.now(),
+                            repos: reposData,
+                        })
+                    );
                 }
             } catch (error) {
                 console.error('[BURY_REPOS_LOAD_ERROR]', error);
