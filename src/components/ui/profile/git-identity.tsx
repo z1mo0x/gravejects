@@ -3,7 +3,7 @@
 import Blink from '@/components/decorations/Blink';
 import StoneBg from '@/components/decorations/stone-bg';
 import { site } from '@/config/site';
-import { MailIcon, UserIcon } from 'lucide-react';
+import { MailIcon, MapPinIcon, UserIcon } from 'lucide-react';
 import Image from 'next/image';
 import React, { memo } from 'react'
 
@@ -46,6 +46,16 @@ function GitIdentity({ username, email, place }: Props) {
                             <MailIcon />
                             <div className="font-bold">
                                 {email}
+                            </div>
+                        </div>
+                    }
+                    {
+                        place
+                        &&
+                        <div className="flex gap-2 items-center">
+                            <MapPinIcon size={32} />
+                            <div className="font-bold">
+                                {place}
                             </div>
                         </div>
                     }

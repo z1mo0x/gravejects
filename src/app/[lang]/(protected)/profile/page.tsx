@@ -56,7 +56,7 @@ export default async function ProtectedPage({ params }: Props) {
           <div className="relative p-10">
             Tabs
           </div>
-          <GitIdentity username={profile.username} email={user?.email} />
+          <GitIdentity username={profile.username} email={user?.email} place={`git:github info --user=${profile.username}`} />
         </div>
       </div>
     </div>
