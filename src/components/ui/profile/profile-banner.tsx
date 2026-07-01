@@ -66,7 +66,7 @@ function ProfileBanner({ user, profile }: Props) {
                         <div className="mt-2.5 text-foreground/75">
                             {description}
                         </div>
-                        {githubProfileUrl && <Link target="_blank" referrerPolicy='no-referrer' href={githubProfileUrl} className="flex gap-2 text-primary items-center mt-5">
+                        {githubProfileUrl && <Link target="_blank" referrerPolicy='no-referrer' href={githubProfileUrl} className="flex w-max gap-2 text-primary items-center mt-5">
                             <LinkIcon size={20} />
                             <span className="">
                                 {githubProfileUrl}
@@ -77,7 +77,7 @@ function ProfileBanner({ user, profile }: Props) {
 
                     </div>
                 </div>
-                <div className="flex flex-col items-end justify-between">
+                <div className="flex flex-col items-end justify-between ">
                     <Link href={`/${lang}/bury`}>
                         <CustomButton className="text-primary border-primary code-glow" variant="icon" iconLeft={PlusIcon}>
                             {t.buryProject}

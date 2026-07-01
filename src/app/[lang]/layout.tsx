@@ -8,6 +8,7 @@ import ThemeProvider from "@/contexts/theme/themeContext";
 import Header from "@/components/common/header";
 import Providers from "../providers";
 import AppInitializer from "@/hoc/app-initialization";
+import 'devicon/devicon.min.css';
 
 export default async function LangLayout({
     children,

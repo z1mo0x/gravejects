@@ -3,7 +3,7 @@
 import { createContext, useContext } from "react";
 import { site, type Lang } from "@/config/site";
 
-type Dictionary = typeof site.dictionary.ru;
+export type Dictionary = typeof site.dictionary.ru;
 
 type LangContextValue = {
     lang: Lang;

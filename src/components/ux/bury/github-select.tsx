@@ -24,11 +24,6 @@ function GithubSelect({ repos, setPreview }: Props) {
 
     const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
 
-    const selected = repos.find(
-        (r) => r.id.toString() === selectedRepo
-    );
-
-
     return (
         <>
             <div className="mt-10">
@@ -49,8 +44,8 @@ function GithubSelect({ repos, setPreview }: Props) {
                             setPreview(repo ?? null);
                         }}
                     >
-                        <SelectTrigger className="font-bold unbouded text-lg w-full mt-5 p-7.5">
-                            <SelectValue placeholder={t.bury.actions.chooseFromGithub} />
+                        <SelectTrigger className="font-bold unbouded text-lg w-full mt-5 p-7.5  ring-0!">
+                            <SelectValue placeholder={t.bury.actions.chooseFromGithub} className='ring-0!' />
                         </SelectTrigger>
 
                         <SelectContent position="popper">

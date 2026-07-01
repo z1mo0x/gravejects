@@ -37,11 +37,11 @@ export default async function ProtectedPage({ params }: Props) {
 
 
   return (
-    <div className="min-h-svh pt-20 w-full">
+    <div className="min-h-svh pt-20 w-full pb-20">
       <Image
         src="/bury-bg.png"
         fill
-        className="object-cover"
+        className="object-cover bg-fixed"
         alt="Фон для страницы похорон проекта"
       />
       <div className="container">
@@ -54,7 +54,9 @@ export default async function ProtectedPage({ params }: Props) {
           <div className="relative p-10">
             Tabs
           </div>
-          <GitIdentity username={profile.username} email={user?.email} place={`git:github info --user=${profile.username}`} />
+          <GitIdentity username={profile.username} email={user?.email}
+
+          />
         </div>
       </div>
     </div>

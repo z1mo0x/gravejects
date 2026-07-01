@@ -104,7 +104,7 @@ export const site = {
                     readyLabel: 'Готов к захоронению',
 
                     fields: {
-                        language: 'Язык',
+                        language: 'Основной язык',
                         stars: 'Звёзды',
                         lastActivity: 'Последняя активность',
                         status: 'Статус',
@@ -121,11 +121,26 @@ export const site = {
                 },
 
                 status: {
-                    abandoned: 'заброшен',
-                    archived: 'архивирован',
-                    resurrected: 'воскрешён',
-                    unfinished: 'не завершён',
-                    unknown: 'не определён',
+                    abandoned: {
+                        label: 'заброшен',
+                        icon: 'skull',
+                    },
+                    archived: {
+                        label: 'архивирован',
+                        icon: 'archive',
+                    },
+                    resurrected: {
+                        label: 'воскрешён',
+                        icon: 'sprout',
+                    },
+                    unfinished: {
+                        label: 'не завершён',
+                        icon: 'hammer',
+                    },
+                    unknown: {
+                        label: 'неизвестно',
+                        icon: 'question',
+                    },
                 },
 
                 validation: {
@@ -244,7 +259,7 @@ export const site = {
                     readyLabel: 'Ready for burial',
 
                     fields: {
-                        language: 'Language',
+                        language: 'Main language',
                         stars: 'Stars',
                         lastActivity: 'Last activity',
                         status: 'Status',
@@ -261,11 +276,26 @@ export const site = {
                 },
 
                 status: {
-                    abandoned: 'abandoned',
-                    archived: 'archived',
-                    resurrected: 'resurrected',
-                    unfinished: 'unfinished',
-                    unknown: 'unknown',
+                    abandoned: {
+                        label: 'abandoned',
+                        icon: 'skull',
+                    },
+                    archived: {
+                        label: 'archived',
+                        icon: 'archive',
+                    },
+                    resurrected: {
+                        label: 'resurrected',
+                        icon: 'sprout',
+                    },
+                    unfinished: {
+                        label: 'unfinished',
+                        icon: 'hammer',
+                    },
+                    unknown: {
+                        label: 'unknown',
+                        icon: 'question',
+                    },
                 },
 
                 validation: {

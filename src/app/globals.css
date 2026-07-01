@@ -519,3 +519,14 @@ img {
 .icon-stone {
   filter: brightness(.9);
 }
+
+.icon-pulse svg {
+  animation: pulseIcon 2s alternate infinite;
+}
+
+@keyframes pulseIcon {
+  to {
+    color: var(--primary);
+    transform: scale(1.05);
+  }
+}

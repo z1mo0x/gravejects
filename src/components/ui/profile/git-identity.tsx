@@ -1,6 +1,7 @@
 'use client'
 
 import Blink from '@/components/decorations/Blink';
+import Code from '@/components/decorations/code';
 import StoneBg from '@/components/decorations/stone-bg';
 import { site } from '@/config/site';
 import { MailIcon, MapPinIcon, UserIcon } from 'lucide-react';
@@ -10,7 +11,7 @@ import React, { memo } from 'react'
 type Props = {
     username: string,
     email?: string,
-    place: string
+    place?: string
 }
 
 function GitIdentity({ username, email, place }: Props) {
@@ -34,7 +35,7 @@ function GitIdentity({ username, email, place }: Props) {
                         alt="Иконка гитхаба"
                     />
                     <div className="flex gap-2 items-center">
-                        <UserIcon />
+                        <UserIcon size={24} />
                         <div className="font-bold">
                             {username}
                         </div>
@@ -43,7 +44,7 @@ function GitIdentity({ username, email, place }: Props) {
                         email
                         &&
                         <div className="flex gap-2 items-center">
-                            <MailIcon />
+                            <MailIcon size={24} />
                             <div className="font-bold">
                                 {email}
                             </div>
@@ -53,15 +54,15 @@ function GitIdentity({ username, email, place }: Props) {
                         place
                         &&
                         <div className="flex gap-2 items-center">
-                            <MapPinIcon size={32} />
+                            <MapPinIcon size={24} />
                             <div className="font-bold">
                                 {place}
                             </div>
                         </div>
                     }
                 </div>
-                <div className="">
-
+                <div className="code-glow mt-5 ">
+                    echo "legacy lives on"
                 </div>
             </StoneBg>
         </div>
