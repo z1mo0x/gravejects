@@ -32,7 +32,6 @@ function RepositoryPreviewCard({ repo }: Props) {
 
                 <div className="overflow-hidden p-5 py-7.5 rounded-lg">
                     <Romb className="mt-0" />
-
                     <AnimatePresence mode="wait">
                         {repo ? (
                             <PreviewRepository
@@ -48,7 +47,6 @@ function RepositoryPreviewCard({ repo }: Props) {
                             <EmptyRepository key="empty-repository" />
                         )}
                     </AnimatePresence>
-
                     <Romb className="mt-5" />
                 </div>
 

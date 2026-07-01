@@ -62,7 +62,7 @@ function GitIdentity({ username, email, place }: Props) {
                     }
                 </div>
                 <div className="code-glow mt-5 ">
-                    echo "legacy lives on"
+                    echo {`"legacy lives on"`}
                 </div>
             </StoneBg>
         </div>
